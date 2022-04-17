@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.IO;
+
 
 namespace Lesson5
 {
@@ -6,7 +9,17 @@ namespace Lesson5
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Console.WriteLine("Введите числа от 0 до 255");
+            string numbStr = Console.ReadLine();
+            string[] numbStrArr = numbStr.Split();
+            byte[] numbArr = new byte[100];
+            for (int i = 0; i < numbStrArr.Length; i++)
+            {
+                Convert.ToByte(numbStrArr[i]);
+                numbArr[i] = Convert.ToByte(numbStrArr[i]);
+                File.WriteAllBytes("bytes.bin", numbArr);
+            };
+            byte[] fromFile = File.ReadAllBytes("bytes.bin");
         }
     }
 }
