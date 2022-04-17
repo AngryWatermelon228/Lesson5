@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IO;
+
 
 namespace Lesson5
 {
@@ -6,7 +8,12 @@ namespace Lesson5
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Console.WriteLine("Введите произвольные данные");
+           string text = Console.ReadLine();
+            string filename = "text.txt";
+            File.WriteAllText(filename, text);
+            Console.ReadLine();
+           
         }
     }
 }
